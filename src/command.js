@@ -38,16 +38,14 @@ const getFilteredMsNames = () => {
  * Get microservices folder
  */
 const getMsFolder = () => {
-  const options = program.opts();
-  return options.msFolder;
+  return (program.opts()).msFolder;
 }
 
 /**
  * Get .env file path
  */
 const getEnvPath = () => {
-  const options = program.opts();
-  return options.envPath;
+  return (program.opts()).envPath;
 }
 
 export {
