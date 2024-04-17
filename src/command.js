@@ -1,9 +1,7 @@
-import { Command, Option } from 'commander';
+import { program, Option } from 'commander';
 import fs from 'node:fs';
 import chalk from 'chalk';
 import packageJson from '../package.json' assert { type: 'json' };
-
-const program = new Command();
 
 program
   .name(packageJson.name)
