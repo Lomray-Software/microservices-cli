@@ -1,7 +1,6 @@
 import { Option } from 'commander';
 import path from 'node:path';
 import fs from 'node:fs';
-import url from 'node:url';
 import chalk from 'chalk';
 import github from '@actions/core';
 import { program } from '../command.js';
