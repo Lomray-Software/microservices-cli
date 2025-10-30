@@ -1,15 +1,19 @@
 import { Command, Option } from 'commander';
 import fs from 'node:fs';
 import chalk from 'chalk';
-import readPackageJson from './helpers/read-package-json.js';
 
-const packageJson = readPackageJson('./package.json');
+/**
+ * Parse package meta
+ */
+const pkg = JSON.parse(
+  fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
+);
 const program = new Command();
 
 program
-  .name(packageJson.name)
-  .description(packageJson.description)
-  .version(packageJson.version)
+  .name(pkg.name)
+  .description(pkg.description)
+  .version(pkg.version)
   .addOption(new Option('--only [microservices]', 'apply commands only for provided microservices, e.g. "users authentication authorization"').env('ONLY'))
   .option('--ms-folder [folder]', 'microservices folder', 'microservices')
   .option('--env-path [env-path]', 'microservices environment path', '.env')
