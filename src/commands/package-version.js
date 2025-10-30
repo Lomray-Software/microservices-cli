@@ -1,6 +1,7 @@
 import { Option } from 'commander';
 import path from 'node:path';
 import fs from 'node:fs';
+import url from 'node:url';
 import chalk from 'chalk';
 import github from '@actions/core';
 import { program } from '../command.js';
@@ -20,7 +21,7 @@ const runOutputPackageVersion = async (workDir = '.') => {
     return github.setFailed(`Action failed with error ${error}`);
   }
 
-  const { version } = (await import(packageJson, { assert: { type: 'json' } })).default;
+  const { version } = JSON.parse(fs.readFileSync(packageJson, 'utf8'));
 
   console.log(`Version package: ${chalk.green(version)}`);
   github.setOutput('version', version);
