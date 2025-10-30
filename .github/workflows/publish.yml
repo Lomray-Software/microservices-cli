@@ -4,18 +4,19 @@ on:
   push:
     branches: [ prod ]
 
+env:
+  NODE_VERSION: 22.21.0
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20.10.0'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
       - name: Publish npm packages / create github release

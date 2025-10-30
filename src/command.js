@@ -1,8 +1,9 @@
 import { Command, Option } from 'commander';
 import fs from 'node:fs';
 import chalk from 'chalk';
-import packageJson from '../package.json' assert { type: 'json' };
+import readPackageJson from './helpers/read-package-json.js';
 
+const packageJson = readPackageJson('./package.json');
 const program = new Command();
 
 program
